@@ -1,0 +1,30 @@
+services:
+  # Option A: Nginx
+  portfolio:
+    build: .
+    image: portfolio-static
+    container_name: portfolio
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    # volumes:
+    #   - ./:/usr/share/nginx/html:ro
+
+  # Option B: Caddy
+  # caddy:
+  #   image: caddy:alpine
+  #   container_name: caddy
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./public:/srv/site/public:ro
+  #     - ./:/srv/site:ro
+  #     - ./Caddyfile:/etc/caddy/Caddyfile:ro
+  #     - caddy_data:/data
+  #     - caddy_config:/config
+
+# volumes:
+#   caddy_data:
+#   caddy_config:

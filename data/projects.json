@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Idempotent Webhook Receiver",
+    "summary": "FastAPI endpoint with HMAC verification, Redis dedupe keys, retries with backoff, and structured logging.",
+    "tags": ["FastAPI", "Redis", "Webhooks", "Observability", "Docker", "Testing"],
+    "links": {
+      "repo": "https://github.com/yourname/webhook-receiver",
+      "demo": "",
+      "loom": "https://www.loom.com/share/your-video-id"
+    },
+    "impact": "Handled 10k+ events/day with 0 dupes; 99.99% success over 30 days.",
+    "notes": [
+      "Request fingerprint → idempotency key in Redis (TTL)",
+      "Exponential backoff + DLQ pattern",
+      "Structured logs with request_id; basic RED metrics",
+      "ADR on idempotency + rate limiting",
+      "pytest happy-path + 1 edge (signature mismatch)"
+    ]
+  },
+  {
+    "title": "Wiki‑Manager API for Wiki.js",
+    "summary": "FastAPI service that creates/updates Wiki.js pages via API with robust path handling and markdown sanitation.",
+    "tags": ["FastAPI", "Wiki.js", "API Integration", "Auth", "Validation", "CI"],
+    "links": {
+      "repo": "https://github.com/yourname/wiki-manager",
+      "demo": "",
+      "loom": "https://www.loom.com/share/your-video-id"
+    },
+    "impact": "Cut documentation time ~70%; consistent pages with automatic sectioning and breadcrumbs.",
+    "notes": [
+      "Tested edge cases: special chars, deep paths, empty fields",
+      "Token-based auth; retries + idempotent updates",
+      "JSON schemas for inputs; markdown normalization",
+      "GitHub Actions: tests + lint on PR"
+    ]
+  },
+  {
+    "title": "Frigate NVR on GPU VM + Coral TPU",
+    "summary": "Dockerized Frigate on GPU VM with Coral USB TPU, 8 RTSP streams, object zones, and HA integration.",
+    "tags": ["Docker", "Frigate", "TPU", "Home Assistant", "NVR", "DevOps"],
+    "links": {
+      "repo": "https://github.com/yourname/frigate-stack",
+      "demo": "",
+      "loom": "https://www.loom.com/share/your-video-id"
+    },
+    "impact": "Stable 8‑camera ingestion; detection latency <300ms; recordings offloaded to HDD to preserve VM storage.",
+    "notes": [
+      "Detector tuning (TPU) + zones per camera",
+      "Bind‑mount storage; retention/cleanup policies",
+      "Health checks and alerts wired to ntfy",
+      "Docs: setup, troubleshooting, TPU/kernel notes"
+    ]
+  },
+  {
+    "title": "Proxmox System Dashboard API",
+    "summary": "Flask service that pulls Proxmox metrics (nodes/VMs/LXCs) and exposes an API for a custom dark UI with an ntfy heartbeat footer.",
+    "tags": ["Flask", "Proxmox API", "Observability", "ntfy", "GitOps"],
+    "links": {
+      "repo": "https://github.com/yourname/proxmox-dashboard-api",
+      "demo": "",
+      "loom": "https://www.loom.com/share/your-video-id"
+    },
+    "impact": "Replaced per‑host polling with unified API; faster incident triage and fewer blind spots.",
+    "notes": [
+      "Token auth to Proxmox; robust error handling",
+      "Heartbeat feed renders last 7 events (ntfy)",
+      "Git‑based deploy to home server",
+      "Unit tests for API adapters"
+    ]
+  },
+  {
+    "title": "Heartbeat Mesh (ntfy)",
+    "summary": "Tiny healthcheck/heartbeat mesh: cron + shell client posts uptime and service status to ntfy; optional FastAPI relay.",
+    "tags": ["Automation", "ntfy", "Cron", "FastAPI", "Bash", "Monitoring"],
+    "links": {
+      "repo": "https://github.com/yourname/heartbeat-mesh",
+      "demo": "",
+      "loom": "https://www.loom.com/share/your-video-id"
+    },
+    "impact": "Early warnings for service failures; <1 min mean detection time across VMs/LXCs.",
+    "notes": [
+      "/usr/local/bin/heartbeat.sh with host tags",
+      "Topic naming convention + retention docs",
+      "Container‑safe: curl-only option; no agents",
+      "Playbooks for common failures"
+    ]
+  },
+  {
+    "title": "Slack TL;DR Bot (Local LLM via Ollama)",
+    "summary": "Pulls channel messages, runs prompt‑templated summaries on a local LLM (Ollama), and returns a concise TL;DR.",
+    "tags": ["Slack API", "Ollama", "LLM", "Webhooks", "Automation", "CI"],
+    "links": {
+      "repo": "https://github.com/yourname/slack-tldr-bot",
+      "demo": "",
+      "loom": "https://www.loom.com/share/your-video-id"
+    },
+    "impact": "Cut review time for long threads by ~60%; on‑device inference keeps data private.",
+    "notes": [
+      "Socket Mode or webhook router variants",
+      "Rate limits + retry/backoff; message batching",
+      "Prompt templates + deterministic settings",
+      "Shortcut/iOS share‑sheet integration option"
+    ]
+  },
+  {
+    "title": "Wiki.js MCP Server for Open WebUI",
+    "summary": "Custom MCP server (Python) to create/search Wiki.js pages directly from Open WebUI, enabling hands‑on docs automation.",
+    "tags": ["Python", "MCP", "Open WebUI", "Wiki.js", "APIs"],
+    "links": {
+      "repo": "https://github.com/yourname/wikijs-mcp-server",
+      "demo": "",
+      "loom": "https://www.loom.com/share/your-video-id"
+    },
+    "impact": "One‑click page creation from the chat UI; reduced context switching and stale docs.",
+    "notes": [
+      "mcpo wrapper; structured commands (create/find/update)",
+      "Auth + namespace routing",
+      "Unit tests for page ops; error surface to UI",
+      "Docs: setup + sample flows"
+    ]
+  }
+]

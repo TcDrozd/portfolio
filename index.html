@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trevor Drozd — Backend & Automation Engineer</title>
+  <meta name="description" content="Backend & Automation Engineer — Python • FastAPI • Docker/CI • Ops‑savvy" />
+  <meta property="og:title" content="Trevor Drozd — Backend & Automation Engineer" />
+  <meta property="og:description" content="Proof‑of‑work projects: FastAPI, webhooks, Redis queues, CI, observability." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/public/favicon.ico" />
+  <!-- Tailwind (CDN for v1) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style> body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; } </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100">
+  <!-- Nav -->
+  <header class="sticky top-0 z-10 backdrop-blur bg-neutral-950/60 border-b border-neutral-800">
+    <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
+      <a href="#" class="font-semibold tracking-tight">Trevor Drozd</a>
+      <nav class="flex gap-4 text-neutral-300 text-sm">
+        <a class="hover:text-white" href="#work">Work</a>
+        <a class="hover:text-white" href="#writing">Writing</a>
+        <a class="hover:text-white" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-5xl px-4 py-16">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-bold leading-tight">
+          Backend & Automation Engineer
+        </h1>
+        <p class="mt-4 text-neutral-300">
+          Python • FastAPI • Docker/CI • Postgres/Redis • Observability.
+          I build small, production‑ready services with clean docs, tests, and demos.<br>
+          <h7>or, in other words: I build internal tools that remove friction.</h7>
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://github.com/tcdrozd" target="_blank" class="px-4 py-2 rounded-xl bg-white text-neutral-900 font-semibold">GitHub</a>
+          <a href="/public/resume.pdf" class="px-4 py-2 rounded-xl bg-neutral-800 border border-neutral-700">Resume</a>
+          <a href="#contact" class="px-4 py-2 rounded-xl bg-neutral-800 border border-neutral-700">Contact</a>
+        </div>
+      </div>
+      <div class="rounded-2xl border border-neutral-800 p-6 bg-gradient-to-br from-neutral-900 to-neutral-950">
+        <h2 class="text-lg font-semibold">Highlights</h2>
+        <ul class="mt-3 space-y-2 text-sm text-neutral-300 list-disc list-inside">
+          <li>Webhook receiver with idempotency + retries + structured logging</li>
+          <li>FastAPI service with background jobs (RQ/Celery) & Redis</li>
+          <li>GitHub Actions CI: tests, docker build, lint, smoke deploy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="mx-auto max-w-5xl px-4">
+    <div class="flex flex-wrap gap-2" id="tagBar"></div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="mx-auto max-w-5xl px-4 py-10">
+    <h2 class="text-2xl font-bold">Selected Work</h2>
+    <div id="projects" class="mt-6 grid sm:grid-cols-2 gap-6"></div>
+  </section>
+
+  <!-- Writing -->
+  <section id="writing" class="mx-auto max-w-5xl px-4 py-10 border-t border-neutral-900">
+    <h2 class="text-2xl font-bold">Writing & Notes</h2>
+    <p class="mt-3 text-neutral-300">Short write‑ups, ADRs, and diagrams. (Wire this to Wiki.js or add markdown links.)</p>
+    <ul class="mt-4 space-y-2 text-neutral-300 text-sm" id="posts">
+      <li><a class="underline" href="#">Designing a resilient webhook receiver</a></li>
+      <li><a class="underline" href="#">Observability starter: logs, metrics, alerts</a></li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="mx-auto max-w-5xl px-4 py-10 border-t border-neutral-900">
+    <h2 class="text-2xl font-bold">Contact</h2>
+    <p class="mt-3 text-neutral-300"><a class="underline" href="mailto:trcharlesd@gmail.com">trcharlesd@gmail.com</a> · 
+    <a class="underline" href="https://www.github.com/tcdrozd">LinkedIn</a> · 
+    <a class="underline" href="https://www.linkedin.com/in/trevor-drozd/">GitHub</a></p>
+  </section>
+
+  <footer class="mx-auto max-w-5xl px-4 py-10 text-neutral-500 text-xs">
+    <p>© <span id="year"></span> Trevor Drozd • Built with HTML + Tailwind • Deployed via GitHub Pages / Docker</p>
+  </footer>
+
+  <script>
+    // Simple data-driven projects grid from /data/projects.json
+    const TAGS = new Set();
+    const selected = new Set();
+
+    async function loadProjects() {
+      const res = await fetch('/data/projects.json');
+      const items = await res.json();
+      items.forEach(p => p.tags.forEach(t => TAGS.add(t)));
+      renderTagBar();
+      renderProjects(items);
+    }
+
+    function renderTagBar() {
+      const tagBar = document.getElementById('tagBar');
+      tagBar.innerHTML = '';
+      Array.from(TAGS).sort().forEach(tag => {
+        const btn = document.createElement('button');
+        btn.className = 'px-3 py-1 rounded-full border border-neutral-700 text-sm hover:bg-neutral-800';
+        btn.textContent = tag;
+        btn.onclick = () => { toggleTag(tag); };
+        tagBar.appendChild(btn);
+      });
+    }
+
+    function toggleTag(tag) {
+      if (selected.has(tag)) selected.delete(tag); else selected.add(tag);
+      loadAndRender();
+    }
+
+    async function loadAndRender() {
+      const res = await fetch('/data/projects.json');
+      const items = await res.json();
+      renderProjects(items);
+    }
+
+    function renderProjects(items) {
+      const grid = document.getElementById('projects');
+      const active = selected.size ? items.filter(p => p.tags.some(t => selected.has(t))) : items;
+      grid.innerHTML = active.map(p => `
+        <article class="rounded-2xl border border-neutral-800 p-5 bg-neutral-900/40">
+          <h3 class="text-lg font-semibold">${p.title}</h3>
+          <p class="mt-2 text-sm text-neutral-300">${p.summary}</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            ${p.tags.map(t => `<span class='text-xs px-2 py-1 rounded-full bg-neutral-800 border border-neutral-700'>${t}</span>`).join('')}
+          </div>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            ${p.links.repo ? `<a class='underline' target='_blank' href='${p.links.repo}'>Repo</a>` : ''}
+            ${p.links.demo ? `<a class='underline' target='_blank' href='${p.links.demo}'>Demo</a>` : ''}
+            ${p.links.loom ? `<a class='underline' target='_blank' href='${p.links.loom}'>Loom</a>` : ''}
+          </div>
+          ${p.impact ? `<p class="mt-3 text-xs text-neutral-400"><strong>Impact:</strong> ${p.impact}</p>` : ''}
+          ${p.notes?.length ? `<ul class="mt-3 text-xs text-neutral-400 list-disc list-inside">${p.notes.map(n => `<li>${n}</li>`).join('')}</ul>` : ''}
+        </article>
+      `).join('');
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    loadProjects();
+  </script>
+</body>
+</html>
