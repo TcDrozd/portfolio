@@ -94,7 +94,7 @@
       "demo": "",
       "loom": "https://www.loom.com/share/your-video-id"
     },
-    "impact": "Cut review time for long threads by ~60%; on‑device inference keeps data private.",
+    "impact": "Cut review time for long threads significantly; local inference keeps data private.",
     "notes": [
       "Socket Mode or webhook router variants",
       "Rate limits + retry/backoff; message batching",
