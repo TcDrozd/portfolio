@@ -27,3 +27,6 @@ Thumbs.db
 dist/
 build/
 node_modules/.env
+
+# --- Update Script ---
+update_portfolio.sh
