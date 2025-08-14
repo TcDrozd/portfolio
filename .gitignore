@@ -1,0 +1,29 @@
+# --- Secrets & runtime artifacts ---
+.env
+.env.*
+letsencrypt/
+certbot-www/
+# If you later add structured logs:
+logs/
+*.log
+
+# --- Python (if any stray py files remain) ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pytest_cache/
+.cache/
+
+# --- Editor/OS noise ---
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+
+# --- Build/output (if you add a build step later) ---
+dist/
+build/
+node_modules/.env
