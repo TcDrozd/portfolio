@@ -28,5 +28,10 @@ dist/
 build/
 node_modules/.env
 
-# --- Update Script ---
+# --- Scripts ---
 update_portfolio.sh
+
+# --- Local dev configs ---
+commands.txt
+nginx.dev.conf
+docker-compose.dev.yml
