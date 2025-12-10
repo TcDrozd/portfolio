@@ -2,7 +2,14 @@
   {
     "title": "Idempotent Webhook Receiver",
     "summary": "FastAPI endpoint with HMAC verification, Redis dedupe keys, retries with backoff, and structured logging.",
-    "tags": ["FastAPI", "Redis", "Webhooks", "Observability", "Docker", "Testing"],
+    "tags": [
+      "FastAPI",
+      "Redis",
+      "Webhooks",
+      "Observability",
+      "Docker",
+      "Testing"
+    ],
     "links": {
       "repo": "https://github.com/tcdrozd/webhook-receiver",
       "demo": "",
@@ -20,7 +27,14 @@
   {
     "title": "Wiki‑Manager API for Wiki.js",
     "summary": "FastAPI service that creates/updates Wiki.js pages via API with robust path handling and markdown sanitation.",
-    "tags": ["FastAPI", "Wiki.js", "API Integration", "Auth", "Validation", "CI"],
+    "tags": [
+      "FastAPI",
+      "Wiki.js",
+      "API Integration",
+      "Auth",
+      "Validation",
+      "CI"
+    ],
     "links": {
       "repo": "https://github.com/tcdrozd/wiki-manager",
       "demo": "",
@@ -120,21 +134,74 @@
     ]
   },
   {
-  "title": "Heart Log – AI-Powered Love Language Classifier",
-  "summary": "Flask-based web app with integrated API that classifies user-submitted relationship moments into love language categories using a local Ollama LLM.",
-  "tags": ["Python", "Flask", "APIs", "Ollama", "Prompt Engineering", "Docker"],
-  "links": {
-    "repo": "https://github.com/TcDrozd/heart-log",
-    "demo": "",
-    "loom": ""
+    "title": "Heart Log – AI-Powered Love Language Classifier",
+    "summary": "Flask-based web app with integrated API that classifies user-submitted relationship moments into love language categories using a local Ollama LLM.",
+    "tags": [
+      "Python",
+      "Flask",
+      "APIs",
+      "Ollama",
+      "Prompt Engineering",
+      "Docker"
+    ],
+    "links": {
+      "repo": "https://github.com/TcDrozd/heart-log",
+      "demo": "",
+      "loom": ""
+    },
+    "impact": "Automates categorization of personal relationship entries, enabling quick reflection on patterns over time without manual tagging.",
+    "notes": [
+      "Two Flask endpoints: main UI + categorization API",
+      "Prompt-engineered JSON output for consistent structure",
+      "Handles malformed responses gracefully with fallback parsing",
+      "Decoupled Ollama server over LAN for flexible deployment",
+      "Dockerized for portability; environment-driven configuration"
+    ]
   },
-  "impact": "Automates categorization of personal relationship entries, enabling quick reflection on patterns over time without manual tagging.",
-  "notes": [
-    "Two Flask endpoints: main UI + categorization API",
-    "Prompt-engineered JSON output for consistent structure",
-    "Handles malformed responses gracefully with fallback parsing",
-    "Decoupled Ollama server over LAN for flexible deployment",
-    "Dockerized for portability; environment-driven configuration"
-  ]
-}
+
+  {
+    "title": "Capybara Party",
+    "description": "A whimsical Flask web app serving daily capybara-themed art and zen-like quotes generated with local AI models. Built to be playful, self-sustaining, and low-maintenance while showcasing Python backend and automation skills.",
+    "highlights": [
+      "Flask backend serving daily refreshed static content (images + quotes)",
+      "AI integration: Ollama models generate inspirational quotes, Stable Diffusion generates artwork",
+      "Automated daily update pipeline with cron and file rotation",
+      "Systemd service for process management and reliability",
+      "Nginx reverse proxy for clean domain routing with SSL",
+      "Lightweight, self-contained design — minimal upkeep once deployed"
+    ],
+    "tech": [
+      "Python (Flask)",
+      "Ollama",
+      "Stable Diffusion",
+      "Nginx",
+      "Systemd",
+      "Cron"
+    ],
+    "repo": "https://github.com/trevordrozd/capybara-party",
+    "demo": "https://capybaraparty.com"
+  },
+  {
+    "title": "Sunflower Log",
+    "description": "A photo-journal web app to track and share the growth of a sunflower over the summer. Combines a clean Flask interface with structured logging, EXIF photo metadata extraction, and production-grade deployment behind Nginx.",
+    "highlights": [
+      "Flask backend with file upload, EXIF metadata parsing, and thumbnail generation",
+      "Responsive UI with gallery-style layout for browsing photo entries",
+      "Confirmation modal on upload to prevent accidental duplicates",
+      "Deployed behind Nginx reverse proxy with custom domain and SSL",
+      "Gunicorn WSGI server managed via systemd for reliability",
+      "Organized project structure with Docker-ready configuration for future portability",
+      "CI/CD hooks for smooth updates via Git"
+    ],
+    "tech": [
+      "Python (Flask)",
+      "Gunicorn",
+      "Nginx",
+      "Systemd",
+      "ExifRead",
+      "SQLite/Postgres (configurable)"
+    ],
+    "repo": "https://github.com/trevordrozd/sunflower-log",
+    "demo": "https://sunflower.yourdomain.com"
+  }
 ]
