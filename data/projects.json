@@ -1,140 +1,270 @@
 [
-  {
-    "title": "Idempotent Webhook Receiver",
-    "summary": "FastAPI endpoint with HMAC verification, Redis dedupe keys, retries with backoff, and structured logging.",
-    "tags": ["FastAPI", "Redis", "Webhooks", "Observability", "Docker", "Testing"],
-    "links": {
-      "repo": "https://github.com/tcdrozd/webhook-receiver",
-      "demo": "",
-      "loom": "https://www.loom.com/share/your-video-id"
+    {
+        "title": "Idempotent Webhook Receiver",
+        "summary": "FastAPI endpoint with HMAC verification, Redis dedupe keys, retries with backoff, and structured logging.",
+        "tags": [
+            "FastAPI",
+            "Redis",
+            "Webhooks",
+            "Observability",
+            "Docker",
+            "Testing"
+        ],
+        "links": {
+            "repo": "https://github.com/tcdrozd/webhook-receiver",
+            "demo": "",
+            "loom": "https://www.loom.com/share/your-video-id"
+        },
+        "impact": "Handled 10k+ events/day with 0 dupes; 99.99% success over 30 days.",
+        "notes": [
+            "Request fingerprint → idempotency key in Redis (TTL)",
+            "Exponential backoff + DLQ pattern",
+            "Structured logs with request_id; basic RED metrics",
+            "ADR on idempotency + rate limiting",
+            "pytest happy-path + 1 edge (signature mismatch)"
+        ]
     },
-    "impact": "Handled 10k+ events/day with 0 dupes; 99.99% success over 30 days.",
-    "notes": [
-      "Request fingerprint → idempotency key in Redis (TTL)",
-      "Exponential backoff + DLQ pattern",
-      "Structured logs with request_id; basic RED metrics",
-      "ADR on idempotency + rate limiting",
-      "pytest happy-path + 1 edge (signature mismatch)"
-    ]
-  },
-  {
-    "title": "Wiki‑Manager API for Wiki.js",
-    "summary": "FastAPI service that creates/updates Wiki.js pages via API with robust path handling and markdown sanitation.",
-    "tags": ["FastAPI", "Wiki.js", "API Integration", "Auth", "Validation", "CI"],
-    "links": {
-      "repo": "https://github.com/tcdrozd/wiki-manager",
-      "demo": "",
-      "loom": "https://www.loom.com/share/your-video-id"
+    {
+        "title": "Wiki-Manager API for Wiki.js",
+        "summary": "FastAPI service that creates/updates Wiki.js pages via API with robust path handling and markdown sanitation.",
+        "tags": [
+            "FastAPI",
+            "Wiki.js",
+            "API Integration",
+            "Auth",
+            "Validation",
+            "CI"
+        ],
+        "links": {
+            "repo": "https://github.com/tcdrozd/wiki-manager",
+            "demo": "",
+            "loom": "https://www.loom.com/share/your-video-id"
+        },
+        "impact": "Cut documentation time ~70%; consistent pages with automatic sectioning and breadcrumbs.",
+        "notes": [
+            "Tested edge cases: special chars, deep paths, empty fields",
+            "Token-based auth; retries + idempotent updates",
+            "JSON schemas for inputs; markdown normalization",
+            "GitHub Actions: tests + lint on PR"
+        ]
     },
-    "impact": "Cut documentation time ~70%; consistent pages with automatic sectioning and breadcrumbs.",
-    "notes": [
-      "Tested edge cases: special chars, deep paths, empty fields",
-      "Token-based auth; retries + idempotent updates",
-      "JSON schemas for inputs; markdown normalization",
-      "GitHub Actions: tests + lint on PR"
-    ]
-  },
-  {
-    "title": "Frigate NVR on GPU VM + Coral TPU",
-    "summary": "Dockerized Frigate on GPU VM with Coral USB TPU, 8 RTSP streams, object zones, and HA integration.",
-    "tags": ["Docker", "Frigate", "TPU", "Home Assistant", "NVR", "DevOps"],
-    "links": {
-      "repo": "",
-      "demo": "",
-      "loom": "https://www.loom.com/share/your-video-id"
+    {
+        "title": "Frigate NVR on GPU VM + Coral TPU",
+        "summary": "Dockerized Frigate on GPU VM with Coral USB TPU, 8 RTSP streams, object zones, and HA integration.",
+        "tags": ["Docker", "Frigate", "TPU", "Home Assistant", "NVR", "DevOps"],
+        "links": {
+            "repo": "",
+            "demo": "",
+            "loom": "https://www.loom.com/share/your-video-id"
+        },
+        "impact": "Stable 8-camera ingestion; detection latency <300ms; recordings offloaded to HDD to preserve VM storage.",
+        "notes": [
+            "Detector tuning (TPU) + zones per camera",
+            "Bind-mount storage; retention/cleanup policies",
+            "Health checks and alerts wired to ntfy",
+            "Docs: setup, troubleshooting, TPU/kernel notes"
+        ]
     },
-    "impact": "Stable 8‑camera ingestion; detection latency <300ms; recordings offloaded to HDD to preserve VM storage.",
-    "notes": [
-      "Detector tuning (TPU) + zones per camera",
-      "Bind‑mount storage; retention/cleanup policies",
-      "Health checks and alerts wired to ntfy",
-      "Docs: setup, troubleshooting, TPU/kernel notes"
-    ]
-  },
-  {
-    "title": "Proxmox System Dashboard API",
-    "summary": "Flask service that pulls Proxmox metrics (nodes/VMs/LXCs) and exposes an API for a custom dark UI with an ntfy heartbeat footer.",
-    "tags": ["Flask", "Proxmox API", "Observability", "ntfy", "GitOps"],
-    "links": {
-      "repo": "https://github.com/tcdrozd/proxmox-dashboard",
-      "demo": "",
-      "loom": "https://www.loom.com/share/your-video-id"
+    {
+        "title": "Proxmox System Dashboard API",
+        "summary": "Flask service that pulls Proxmox metrics (nodes/VMs/LXCs) and exposes an API for a custom dark UI with an ntfy heartbeat footer.",
+        "tags": ["Flask", "Proxmox API", "Observability", "ntfy", "GitOps"],
+        "links": {
+            "repo": "https://github.com/tcdrozd/proxmox-dashboard",
+            "demo": "",
+            "loom": "https://www.loom.com/share/your-video-id"
+        },
+        "impact": "Replaced per-host polling with unified API; faster incident triage and fewer blind spots.",
+        "notes": [
+            "Token auth to Proxmox; robust error handling",
+            "Heartbeat feed renders last 7 events (ntfy)",
+            "Git-based deploy to home server",
+            "Unit tests for API adapters"
+        ]
     },
-    "impact": "Replaced per‑host polling with unified API; faster incident triage and fewer blind spots.",
-    "notes": [
-      "Token auth to Proxmox; robust error handling",
-      "Heartbeat feed renders last 7 events (ntfy)",
-      "Git‑based deploy to home server",
-      "Unit tests for API adapters"
-    ]
-  },
-  {
-    "title": "Heartbeat Mesh (ntfy)",
-    "summary": "Tiny healthcheck/heartbeat mesh: cron + shell client posts uptime and service status to ntfy; optional FastAPI relay.",
-    "tags": ["Automation", "ntfy", "Cron", "FastAPI", "Bash", "Monitoring"],
-    "links": {
-      "repo": "",
-      "demo": "",
-      "loom": "https://www.loom.com/share/your-video-id"
+    {
+        "title": "Heartbeat Mesh (ntfy)",
+        "summary": "Tiny healthcheck/heartbeat mesh: cron + shell client posts uptime and service status to ntfy; optional FastAPI relay.",
+        "tags": ["Automation", "ntfy", "Cron", "FastAPI", "Bash", "Monitoring"],
+        "links": {
+            "repo": "",
+            "demo": "",
+            "loom": "https://www.loom.com/share/your-video-id"
+        },
+        "impact": "Early warnings for service failures; <1 min mean detection time across VMs/LXCs.",
+        "notes": [
+            "/usr/local/bin/heartbeat.sh with host tags",
+            "Topic naming convention + retention docs",
+            "Container-safe: curl-only option; no agents",
+            "Playbooks for common failures"
+        ]
     },
-    "impact": "Early warnings for service failures; <1 min mean detection time across VMs/LXCs.",
-    "notes": [
-      "/usr/local/bin/heartbeat.sh with host tags",
-      "Topic naming convention + retention docs",
-      "Container‑safe: curl-only option; no agents",
-      "Playbooks for common failures"
-    ]
-  },
-  {
-    "title": "Slack TL;DR Bot (Local LLM via Ollama)",
-    "summary": "Pulls channel messages, runs prompt‑templated summaries on a local LLM (Ollama), and returns a concise TL;DR.",
-    "tags": ["Slack API", "Ollama", "LLM", "Webhooks", "Automation", "CI"],
-    "links": {
-      "repo": "",
-      "demo": "",
-      "loom": "https://www.loom.com/share/your-video-id"
+    {
+        "title": "Slack TL;DR Bot (Local LLM via Ollama)",
+        "summary": "Pulls channel messages, runs prompt-templated summaries on a local LLM (Ollama), and returns a concise TL;DR.",
+        "tags": ["Slack API", "Ollama", "LLM", "Webhooks", "Automation", "CI"],
+        "links": {
+            "repo": "",
+            "demo": "",
+            "loom": "https://www.loom.com/share/your-video-id"
+        },
+        "impact": "Cut review time for long threads significantly; local inference keeps data private.",
+        "notes": [
+            "Socket Mode or webhook router variants",
+            "Rate limits + retry/backoff; message batching",
+            "Prompt templates + deterministic settings",
+            "Shortcut/iOS share-sheet integration option"
+        ]
     },
-    "impact": "Cut review time for long threads significantly; local inference keeps data private.",
-    "notes": [
-      "Socket Mode or webhook router variants",
-      "Rate limits + retry/backoff; message batching",
-      "Prompt templates + deterministic settings",
-      "Shortcut/iOS share‑sheet integration option"
-    ]
-  },
-  {
-    "title": "Wiki.js MCP Server for Open WebUI",
-    "summary": "Custom MCP server (Python) to create/search Wiki.js pages directly from Open WebUI, enabling hands‑on docs automation.",
-    "tags": ["Python", "MCP", "Open WebUI", "Wiki.js", "APIs"],
-    "links": {
-      "repo": "https://github.com/TcDrozd/wikijs-mcp-server",
-      "demo": "",
-      "loom": "https://www.loom.com/share/your-video-id"
+    {
+        "title": "Wiki.js MCP Server for Open WebUI",
+        "summary": "Custom MCP server (Python) to create/search Wiki.js pages directly from Open WebUI, enabling hands-on docs automation.",
+        "tags": ["Python", "MCP", "Open WebUI", "Wiki.js", "APIs"],
+        "links": {
+            "repo": "https://github.com/TcDrozd/wikijs-mcp-server",
+            "demo": "",
+            "loom": "https://www.loom.com/share/your-video-id"
+        },
+        "impact": "One-click page creation from the chat UI; reduced context switching and stale docs.",
+        "notes": [
+            "mcpo wrapper; structured commands (create/find/update)",
+            "Auth + namespace routing",
+            "Unit tests for page ops; error surface to UI",
+            "Docs: setup + sample flows"
+        ]
     },
-    "impact": "One‑click page creation from the chat UI; reduced context switching and stale docs.",
-    "notes": [
-      "mcpo wrapper; structured commands (create/find/update)",
-      "Auth + namespace routing",
-      "Unit tests for page ops; error surface to UI",
-      "Docs: setup + sample flows"
-    ]
-  },
-  {
-  "title": "Heart Log – AI-Powered Love Language Classifier",
-  "summary": "Flask-based web app with integrated API that classifies user-submitted relationship moments into love language categories using a local Ollama LLM.",
-  "tags": ["Python", "Flask", "APIs", "Ollama", "Prompt Engineering", "Docker"],
-  "links": {
-    "repo": "https://github.com/TcDrozd/heart-log",
-    "demo": "",
-    "loom": ""
-  },
-  "impact": "Automates categorization of personal relationship entries, enabling quick reflection on patterns over time without manual tagging.",
-  "notes": [
-    "Two Flask endpoints: main UI + categorization API",
-    "Prompt-engineered JSON output for consistent structure",
-    "Handles malformed responses gracefully with fallback parsing",
-    "Decoupled Ollama server over LAN for flexible deployment",
-    "Dockerized for portability; environment-driven configuration"
-  ]
-}
+    {
+        "title": "Heart Log – AI-Powered Love Language Classifier",
+        "summary": "Flask-based web app with integrated API that classifies user-submitted relationship moments into love language categories using a local Ollama LLM.",
+        "tags": [
+            "Python",
+            "Flask",
+            "APIs",
+            "Ollama",
+            "Prompt Engineering",
+            "Docker"
+        ],
+        "links": {
+            "repo": "https://github.com/TcDrozd/heart-log",
+            "demo": "",
+            "loom": ""
+        },
+        "impact": "Automates categorization of personal relationship entries, enabling quick reflection on patterns over time without manual tagging.",
+        "notes": [
+            "Two Flask endpoints: main UI + categorization API",
+            "Prompt-engineered JSON output for consistent structure",
+            "Handles malformed responses gracefully with fallback parsing",
+            "Decoupled Ollama server over LAN for flexible deployment",
+            "Dockerized for portability; environment-driven configuration"
+        ]
+    },
+
+    {
+        "title": "Rory Walk Tracker",
+        "summary": "Flask microservice and minimal UI for logging dog walks, exposing JSON/CSV endpoints for automations, dashboards, and Home Assistant.",
+        "tags": ["Python", "Flask", "APIs", "Automation", "Home Assistant"],
+        "links": {
+            "repo": "",
+            "demo": "",
+            "loom": ""
+        },
+        "impact": "Replaced a long-running Apple Notes ‘log as database’ workflow with a structured API and file-backed storage, making Rory’s walk history queryable and automatable.",
+        "notes": [
+            "Endpoints: POST /api/add, GET /api/walks, GET /api/latest, GET /download",
+            "Simple HTML front-end backed by the same API used for automations",
+            "JSON file storage as a baseline; ready for future DB swap if needed",
+            "Deployed on homelab apps LXC with systemd service and reverse proxy",
+            "Designed for easy consumption by iOS Shortcuts and Home Assistant"
+        ]
+    },
+    {
+        "title": "Project Planner",
+        "summary": "API-first Flask service with a lightweight vanilla JS front-end for tracking homelab and side projects, their status, category, and priority.",
+        "tags": ["Python", "Flask", "JavaScript", "APIs", "Homelab"],
+        "links": {
+            "repo": "",
+            "demo": "",
+            "loom": ""
+        },
+        "impact": "Centralized project tracking that replaces scattered notes and ad-hoc lists, making it easier to see what’s in-flight across the homelab.",
+        "notes": [
+            "REST-style endpoints for listing and managing projects (e.g. /projects)",
+            "Fetch-based front-end with simple cards showing status, category, and location",
+            "Designed to sit cleanly behind nginx for friendly names instead of raw ports",
+            "JSON-first data model so other tools (dashboards, scripts) can consume it",
+            "Built to be extendable (tags, filters, and future metrics/graphs)"
+        ]
+    },
+    {
+        "title": "AI-Powered Network Mural",
+        "summary": "In-progress generative art wall that visualizes network traffic as an ambient nebula scene using WebGL (PixiJS/Three.js) and prompts from a local LLM.",
+        "tags": [
+            "Python",
+            "Flask",
+            "WebSockets",
+            "PixiJS",
+            "Three.js",
+            "Ollama",
+            "Visualization"
+        ],
+        "links": {
+            "repo": "",
+            "demo": "",
+            "loom": ""
+        },
+        "impact": "Explores a creative form of observability where network patterns become an ambient, living mural instead of a traditional dashboard.",
+        "notes": [
+            "Flask backend with Socket.IO-style real-time updates planned for network events",
+            "PixiJS canvas with layered ‘nebula base’ effect and parallaxing textures",
+            "Future bokeh/particle systems that respond to traffic volume or classifications",
+            "Ollama-backed text prompts to narrate or ‘caption’ what the network is doing",
+            "Designed to integrate with existing homelab metrics as a secondary, ambient display"
+        ]
+    },
+
+    {
+        "title": "Capybara Party",
+        "description": "A whimsical Flask web app serving daily capybara-themed art and zen-like quotes generated with local AI models. Built to be playful, self-sustaining, and low-maintenance while showcasing Python backend and automation skills.",
+        "highlights": [
+            "Flask backend serving daily refreshed static content (images + quotes)",
+            "AI integration: Ollama models generate inspirational quotes, Stable Diffusion generates artwork",
+            "Automated daily update pipeline with cron and file rotation",
+            "Systemd service for process management and reliability",
+            "Nginx reverse proxy for clean domain routing with SSL",
+            "Lightweight, self-contained design — minimal upkeep once deployed"
+        ],
+        "tech": [
+            "Python (Flask)",
+            "Ollama",
+            "Stable Diffusion",
+            "Nginx",
+            "Systemd",
+            "Cron"
+        ],
+        "repo": "https://github.com/trevordrozd/capybara-party",
+        "demo": "https://capybaraparty.com"
+    },
+    {
+        "title": "Sunflower Log",
+        "description": "A photo-journal web app to track and share the growth of a sunflower over the summer. Combines a clean Flask interface with structured logging, EXIF photo metadata extraction, and production-grade deployment behind Nginx.",
+        "highlights": [
+            "Flask backend with file upload, EXIF metadata parsing, and thumbnail generation",
+            "Responsive UI with gallery-style layout for browsing photo entries",
+            "Confirmation modal on upload to prevent accidental duplicates",
+            "Deployed behind Nginx reverse proxy with custom domain and SSL",
+            "Gunicorn WSGI server managed via systemd for reliability",
+            "Organized project structure with Docker-ready configuration for future portability",
+            "CI/CD hooks for smooth updates via Git"
+        ],
+        "tech": [
+            "Python (Flask)",
+            "Gunicorn",
+            "Nginx",
+            "Systemd",
+            "ExifRead",
+            "SQLite/Postgres (configurable)"
+        ],
+        "repo": "https://github.com/trevordrozd/sunflower-log",
+        "demo": "https://sunflower.yourdomain.com"
+    }
 ]
