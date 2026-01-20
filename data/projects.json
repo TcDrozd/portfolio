@@ -17,7 +17,7 @@
       "loom": ""
     },
     "impact": "Enabled secure, centralized ingestion of internal webhooks across multiple self-hosted services, with fast key rotation and zero-downtime config changes.",
-    "highlights": [
+    "notes": [
       "Edge ingress service authenticates requests via per-client tokens",
       "Secrets loaded from a file-backed key store (bind-mounted into container)",
       "Key ownership mapping enables fast revoke/rotate without code changes",
@@ -30,7 +30,7 @@
     "title": "Shared Photo Frame Platform",
     "description": "A self-hosted, end-to-end photo frame ecosystem designed for non-technical users to safely upload photos while maintaining a resilient, offline-first display client. Built to run unattended on low-power hardware, with cloud-backed manifests, strict access control, and automated synchronization.",
     "impact": "Deployed in a real family environment with non-technical users; operates unattended for weeks at a time without intervention.",
-    "highlights": [
+    "notes": [
       "Offline-first frame client (Raspberry Pi & Android tablet support) that continues operating without network access",
       "Cloud-backed manifest-driven architecture decoupling content selection from display logic",
       "Automated publisher pipeline generating deterministic manifests from S3 object state",
@@ -71,7 +71,7 @@
       "loom": ""
     },
     "impact": "Cut documentation time ~70%; consistent pages with automatic sectioning and breadcrumbs.",
-    "highlights": [
+    "notes": [
       "Tested edge cases: special chars, deep paths, empty fields",
       "Token-based auth; retries + idempotent upsert by path",
       "JSON schemas for inputs; markdown normalization",
@@ -88,11 +88,11 @@
       "loom": ""
     },
     "impact": "Stable 8‑camera ingestion; recordings offloaded to HDD; Low-latency detections suitable for live automations (measured informally in HA events).",
-    "highlights": [
+    "notes": [
       "Detector tuning (TPU) + zones per camera",
       "Bind‑mount storage; retention/cleanup policies",
       "Health checks and alerts wired to ntfy",
-      "Docs: setup, troubleshooting, TPU/kernel highlights",
+      "Docs: setup, troubleshooting, TPU/kernel notes",
       "TODO add diagram cameras >> Nightowl >> rtsp >> Frigate >> Storage >> HA Integration >> Alert"
     ]
   },
@@ -106,7 +106,7 @@
       "loom": ""
     },
     "impact": "Replaced per‑host polling with unified API; faster incident triage and fewer blind spots.",
-    "highlights": [
+    "notes": [
       "Token auth to Proxmox; robust error handling",
       "Heartbeat feed renders last 7 events (ntfy)",
       "Git‑based deploy to home server",
@@ -123,7 +123,7 @@
       "loom": "https://www.loom.com/share/your-video-id"
     },
     "impact": "Early warnings for service failures; <1 min mean detection time across VMs/LXCs.",
-    "highlights": [
+    "notes": [
       "/usr/local/bin/heartbeat.sh with host tags",
       "Topic naming convention + retention docs",
       "Container‑safe: curl-only option; no agents"
@@ -148,10 +148,10 @@
       "loom": ""
     },
     "impact": "Reduced time spent on repetitive admin and note-processing by turning unstructured inputs into predictable, reusable formats; privacy-first defaults keep sensitive content on-device with opt-in, controlled self-hosted processing for richer outputs.",
-    "highlights": [
+    "notes": [
       "Brain Dump: clipboard-first (or prompt if empty) + on-device model to turn messy thoughts into priorities, next actions, questions, and a short plan in the user’s tone",
       "Reusable 'safe dictionary' pattern to prevent broken handoffs between shortcuts and preserve required fields/defaults",
-      "Share-sheet entry points for quick capture from apps; consistent formatting for highlights/Reminders/logs",
+      "Share-sheet entry points for quick capture from apps; consistent formatting for notes/Reminders/logs",
       "Optional AI integrations: Shortcuts that POST to Ollama/Open WebUI endpoints via webhook/router over Tailscale (no third-party SaaS required)",
       "Built with edge cases in mind: empty inputs, missing fields, retries/timeouts for network calls, and deterministic templates for repeatable outputs"
     ]
@@ -166,7 +166,7 @@
       "loom": ""
     },
     "impact": "One‑click page creation from the chat UI; reduced context switching and stale docs.",
-    "highlights": [
+    "notes": [
       "mcpo wrapper; structured commands (create/find/update)",
       "Auth + namespace routing",
       "Unit tests for page ops; error surface to UI",
@@ -190,7 +190,7 @@
       "loom": ""
     },
     "impact": "Automates categorization of personal relationship entries, enabling quick reflection on patterns over time without manual tagging.",
-    "highlights": [
+    "notes": [
       "Two Flask endpoints: main UI + categorization API",
       "Prompt-engineered JSON output for consistent structure",
       "Handles malformed responses gracefully with fallback parsing",
@@ -202,7 +202,7 @@
   {
     "title": "Capybara Party",
     "description": "A whimsical Flask web app serving daily capybara-themed art and zen-like quotes generated with local AI models. Built to be playful, self-sustaining, and low-maintenance while showcasing Python backend and automation skills.",
-    "highlights": [
+    "notes": [
       "Flask backend serving daily refreshed static content (images + quotes)",
       "AI integration: Ollama models generate inspirational quotes, Stable Diffusion generates artwork",
       "Automated daily update pipeline with cron and file rotation",
@@ -224,7 +224,7 @@
   {
     "title": "Sunflower Log",
     "description": "A photo-journal web app to track and share the growth of a sunflower over the summer. Combines a clean Flask interface with structured logging, EXIF photo metadata extraction, and production-grade deployment behind Nginx.",
-    "highlights": [
+    "notes": [
       "Flask backend with file upload, EXIF metadata parsing, and thumbnail generation",
       "Responsive UI with gallery-style layout for browsing photo entries",
       "Confirmation modal on upload to prevent accidental duplicates",
