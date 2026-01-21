@@ -10,7 +10,7 @@
       "Clear separation between edge ingress and internal router service",
       "Dockerized services with profile-based startup for local vs production use"
     ],
-    "tech": [
+    "tags": [
       "Python",
       "FastAPI",
       "Webhooks",
@@ -28,7 +28,7 @@
   },
   {
     "title": "Shared Photo Frame Platform",
-    "description": "A self-hosted, end-to-end photo frame ecosystem designed for non-technical users to safely upload photos while maintaining a resilient, offline-first display client. Built to run unattended on low-power hardware, with cloud-backed manifests, strict access control, and automated synchronization.",
+    "description": "A self-hosted, end-to-end photo frame ecosystem designed for non-tagsnical users to safely upload photos while maintaining a resilient, offline-first display client. Built to run unattended on low-power hardware, with cloud-backed manifests, strict access control, and automated synchronization.",
     "highlights": [
       "Offline-first frame client (Raspberry Pi & Android tablet support) that continues operating without network access",
       "Cloud-backed manifest-driven architecture decoupling content selection from display logic",
@@ -39,7 +39,7 @@
       "Clear separation of concerns: publisher, viewer, sync tooling, and client UI",
       "Designed explicitly for long-term unattended operation in real-world home deployments"
     ],
-    "tech": [
+    "tags": [
       "Python",
       "Flask",
       "AWS S3",
@@ -50,7 +50,7 @@
       "Nginx",
       "IAM / Presigned URLs"
     ],
-    "impact": "Deployed in a real family environment with non-technical users; operates unattended for weeks at a time without intervention.",
+    "impact": "Deployed in a real family environment with non-tagsnical users; operates unattended for weeks at a time without intervention.",
     "links": {
       "repo": "https://github.com/tcdrozd/shared-photo-frame",
       "demo": "",
@@ -66,7 +66,7 @@
       "JSON schemas for inputs; markdown normalization",
       "TODO add example payload / screenshot"
     ],
-    "tech": [
+    "tags": [
       "FastAPI",
       "Wiki.js",
       "API Integration",
@@ -91,7 +91,7 @@
       "Docs: setup, troubleshooting, TPU/kernel notes",
       "TODO add diagram cameras >> Nightowl >> rtsp >> Frigate >> Storage >> HA Integration >> Alert"
     ],
-    "tech": ["Docker", "Frigate", "TPU", "Home Assistant", "NVR", "DevOps"],
+    "tags": ["Docker", "Frigate", "TPU", "Home Assistant", "NVR", "DevOps"],
     "impact": "Stable 8-camera ingestion; recordings offloaded to HDD; Low-latency detections suitable for live automations (measured informally in HA events).",
     "links": {
       "repo": "",
@@ -108,7 +108,7 @@
       "Git-based deploy to home server",
       "TODO screenshot | add endpoints"
     ],
-    "tech": ["Flask", "Proxmox API", "Observability", "ntfy", "GitOps"],
+    "tags": ["Flask", "Proxmox API", "Observability", "ntfy", "GitOps"],
     "impact": "Replaced per-host polling with unified API; faster incident triage and fewer blind spots.",
     "links": {
       "repo": "https://github.com/tcdrozd/proxmox-dashboard",
@@ -124,7 +124,7 @@
       "Topic naming convention + retention docs",
       "Container-safe: curl-only option; no agents"
     ],
-    "tech": ["Automation", "ntfy", "Cron", "FastAPI", "Bash", "Monitoring"],
+    "tags": ["Automation", "ntfy", "Cron", "FastAPI", "Bash", "Monitoring"],
     "impact": "Early warnings for service failures; <1 min mean detection time across VMs/LXCs.",
     "links": {
       "repo": "",
@@ -142,7 +142,7 @@
       "Optional AI integrations: Shortcuts that POST to Ollama/Open WebUI endpoints via webhook/router over Tailscale (no third-party SaaS required)",
       "Built with edge cases in mind: empty inputs, missing fields, retries/timeouts for network calls, and deterministic templates for repeatable outputs"
     ],
-    "tech": [
+    "tags": [
       "Apple Shortcuts",
       "iOS Automation",
       "Productivity",
@@ -168,7 +168,7 @@
       "Unit tests for page ops; error surface to UI",
       "Docs: setup + sample flows"
     ],
-    "tech": ["Python", "MCP", "Open WebUI", "Wiki.js", "APIs"],
+    "tags": ["Python", "MCP", "Open WebUI", "Wiki.js", "APIs"],
     "impact": "One-click page creation from the chat UI; reduced context switching and stale docs.",
     "links": {
       "repo": "https://github.com/TcDrozd/wikijs-mcp-server",
@@ -186,7 +186,7 @@
       "Decoupled Ollama server over LAN for flexible deployment",
       "Dockerized for portability; environment-driven configuration"
     ],
-    "tech": [
+    "tags": [
       "Python",
       "Flask",
       "APIs",
@@ -212,7 +212,7 @@
       "Nginx reverse proxy for clean domain routing with SSL",
       "Lightweight, self-contained design — minimal upkeep once deployed"
     ],
-    "tech": [
+    "tags": [
       "Python (Flask)",
       "Ollama",
       "Stable Diffusion",
@@ -239,7 +239,7 @@
       "Organized project structure with Docker-ready configuration for future portability",
       "CI/CD hooks for smooth updates via Git"
     ],
-    "tech": [
+    "tags": [
       "Python (Flask)",
       "Gunicorn",
       "Nginx",

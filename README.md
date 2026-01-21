@@ -29,6 +29,20 @@ Customize
 	3.	Add your resume.pdf to public/.
 	4.	(Optional) tweak styling in styles.css.
 
+JSON Shape
+{
+  "title": "",
+  "description": "",
+  "highlights": [],
+  "tags": [],
+  "impact": "",
+  "links": {
+    "repo": "",
+    "demo": "",
+    "loom": ""
+  }
+}
+
 Deployment Options
 	•	GitHub Pages — Free, zero-maintenance.
 	•	Cloudflare Pages — Free, CDN, TLS.
