@@ -2,7 +2,7 @@
   {
     "title": "Webhook Router & Edge Ingress Service",
     "description": "Lightweight webhook ingress and routing service with token-based authentication, file-backed secret management, rate limiting, and containerized deployment. Designed for reliability, easy key rotation, and internal service isolation.",
-    "highlights": [
+    "notes": [
       "Edge ingress service authenticates requests via per-client tokens",
       "Secrets loaded from a file-backed key store (bind-mounted into container)",
       "Key ownership mapping enables fast revoke/rotate without code changes",
@@ -29,7 +29,7 @@
   {
     "title": "Shared Photo Frame Platform",
     "description": "A self-hosted, end-to-end photo frame ecosystem designed for non-tagsnical users to safely upload photos while maintaining a resilient, offline-first display client. Built to run unattended on low-power hardware, with cloud-backed manifests, strict access control, and automated synchronization.",
-    "highlights": [
+    "notes": [
       "Offline-first frame client (Raspberry Pi & Android tablet support) that continues operating without network access",
       "Cloud-backed manifest-driven architecture decoupling content selection from display logic",
       "Automated publisher pipeline generating deterministic manifests from S3 object state",
@@ -60,7 +60,7 @@
   {
     "title": "Wiki-Manager API for Wiki.js",
     "description": "FastAPI service that creates/updates Wiki.js pages via API with robust path handling and markdown sanitation.",
-    "highlights": [
+    "notes": [
       "Tested edge cases: special chars, deep paths, empty fields",
       "Token-based auth; retries + idempotent upsert by path",
       "JSON schemas for inputs; markdown normalization",
@@ -84,7 +84,7 @@
   {
     "title": "Frigate NVR on GPU VM + Coral TPU",
     "description": "Dockerized Frigate on GPU VM with Coral USB TPU, 8 RTSP streams, object zones, and HA integration.",
-    "highlights": [
+    "notes": [
       "Detector tuning (TPU) + zones per camera",
       "Bind-mount storage; retention/cleanup policies",
       "Health checks and alerts wired to ntfy",
@@ -102,7 +102,7 @@
   {
     "title": "Proxmox System Dashboard API",
     "description": "Flask service that pulls Proxmox metrics (nodes/VMs/LXCs) and exposes an API for a custom dark UI with an ntfy heartbeat footer.",
-    "highlights": [
+    "notes": [
       "Token auth to Proxmox; robust error handling",
       "Heartbeat feed renders last 7 events (ntfy)",
       "Git-based deploy to home server",
@@ -119,7 +119,7 @@
   {
     "title": "Heartbeat Checks via NTFY (cron + shell)",
     "description": "Tiny healthcheck/heartbeat mesh: cron + shell client posts uptime and service status to ntfy; optional FastAPI relay.",
-    "highlights": [
+    "notes": [
       "/usr/local/bin/heartbeat.sh with host tags",
       "Topic naming convention + retention docs",
       "Container-safe: curl-only option; no agents"
@@ -135,7 +135,7 @@
   {
     "title": "iOS Shortcut Automation Suite (Privacy-First Capture + Self-Hosted AI Integrations)",
     "description": "A suite of Apple Shortcuts that standardizes quick capture (clipboard/share sheet/voice), enforces clean data handoffs, and produces consistent structured outputs for work and personal workflows. Core flows use Apple Shortcuts’ on-device model; advanced flows optionally call self-hosted LLM endpoints (Ollama/Open WebUI) over Tailscale.",
-    "highlights": [
+    "notes": [
       "Brain Dump: clipboard-first (or prompt if empty) + on-device model to turn messy thoughts into priorities, next actions, questions, and a short plan in the user’s tone",
       "Reusable 'safe dictionary' pattern to prevent broken handoffs between shortcuts and preserve required fields/defaults",
       "Share-sheet entry points for quick capture from apps; consistent formatting for notes/Reminders/logs",
@@ -162,7 +162,7 @@
   {
     "title": "Wiki.js MCP Server for Open WebUI",
     "description": "Custom MCP server (Python) to create/search Wiki.js pages directly from Open WebUI, enabling hands-on docs automation.",
-    "highlights": [
+    "notes": [
       "mcpo wrapper; structured commands (create/find/update)",
       "Auth + namespace routing",
       "Unit tests for page ops; error surface to UI",
@@ -179,7 +179,7 @@
   {
     "title": "Heart Log – AI-Powered Love Language Classifier",
     "description": "Flask-based web app with integrated API that classifies user-submitted relationship moments into love language categories using a local Ollama LLM.",
-    "highlights": [
+    "notes": [
       "Two Flask endpoints: main UI + categorization API",
       "Prompt-engineered JSON output for consistent structure",
       "Handles malformed responses gracefully with fallback parsing",
@@ -204,7 +204,7 @@
   {
     "title": "Capybara Party",
     "description": "A whimsical Flask web app serving daily capybara-themed art and zen-like quotes generated with local AI models. Built to be playful, self-sustaining, and low-maintenance while showcasing Python backend and automation skills.",
-    "highlights": [
+    "notes": [
       "Flask backend serving daily refreshed static content (images + quotes)",
       "AI integration: Ollama models generate inspirational quotes, Stable Diffusion generates artwork",
       "Automated daily update pipeline with cron and file rotation",
@@ -230,7 +230,7 @@
   {
     "title": "Sunflower Log",
     "description": "A photo-journal web app to track and share the growth of a sunflower over the summer. Combines a clean Flask interface with structured logging, EXIF photo metadata extraction, and production-grade deployment behind Nginx.",
-    "highlights": [
+    "notes": [
       "Flask backend with file upload, EXIF metadata parsing, and thumbnail generation",
       "Responsive UI with gallery-style layout for browsing photo entries",
       "Confirmation modal on upload to prevent accidental duplicates",
@@ -249,7 +249,7 @@
     ],
     "impact": "",
     "links": {
-      "repo": "https://github.com/tcdrozd/sunflower-log",
+      "repo": "https://github.com/tcdrozd/sunflower",
       "demo": "https://sunflower.capybaraparty.com",
       "loom": ""
     }

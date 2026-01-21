@@ -1,16 +1,6 @@
-Backend/Automation Portfolio — Starter Kit & Deploy Guide
+## Quick Start
 
-A clean, fast-loading, and maintainable portfolio template for backend & automation engineers.
-
-Features
-	•	Static + Simple — No frameworks required; HTML + TailwindCSS.
-	•	Data-Driven Projects — Projects loaded from a single data/projects.json file.
-	•	Tag Filtering — Quick client-side filter by tech tags.
-	•	Ready to Deploy Anywhere — GitHub Pages, Cloudflare Pages, or self-host via Docker.
-	•	Dark Theme — Minimal and modern design.
-
-Quick Start
-
+```bash
 # Clone the repo
 git clone https://github.com/yourname/portfolio.git
 cd portfolio
@@ -18,23 +8,25 @@ cd portfolio
 # Local dev (simple HTTP server)
 make serve
 # → visit http://localhost:8080
+```
 
-# Or self-host with Docker (Nginx)
-docker compose up -d
-# → visit http://<host-ip>:8080
+## Customize
 
-Customize
-	1.	Edit data/projects.json with your projects.
-	2.	Update links and contact info in index.html.
-	3.	Add your resume.pdf to public/.
-	4.	(Optional) tweak styling in styles.css.
+1. Edit `data/projects.json` to add/update projects.
+2. Update links and contact info in `index.html`.
+3. Add `public/resume.pdf` (optional).
+4. Tweak styling in `styles.css`.
 
-JSON Shape
+## Projects JSON Shape (canonical)
+
+Each project must conform to this schema (empty strings are OK):
+
+```json
 {
   "title": "",
   "description": "",
   "highlights": [],
-  "tags": [],
+  "tech": [],
   "impact": "",
   "links": {
     "repo": "",
@@ -42,11 +34,21 @@ JSON Shape
     "loom": ""
   }
 }
+```
 
-Deployment Options
-	•	GitHub Pages — Free, zero-maintenance.
-	•	Cloudflare Pages — Free, CDN, TLS.
-	•	Oracle VM / VPS — Use provided Nginx or Caddy Docker config.
+## Deployment
+
+This is a static site. You can host it anywhere that serves files.
+
+### Option A — Static hosting (recommended)
+- GitHub Pages
+- Cloudflare Pages
+- Any CDN / object storage static hosting
+
+### Option B — Self-host
+Serve the repository root (or the built artifact) with your web server of choice.
+
+Important: ensure `data/projects.json` is served as a static file (no SPA rewrite rules should intercept `/data/*`).
 
 License
 
