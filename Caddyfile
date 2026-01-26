@@ -1,8 +1,0 @@
-your.domain.com {
-  root * /srv/site
-  file_server
-  encode gzip zstd
-  header {
-    X-Content-Type-Options nosniff
-  }
-}

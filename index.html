@@ -5,19 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trevor Drozd — Backend & Automation Engineer</title>
   <meta name="description" content="Backend & Automation Engineer — Python • FastAPI • Docker/CI • Ops‑savvy" />
+  
+  <!-- Open Graph meta tags for social sharing -->
   <meta property="og:title" content="Trevor Drozd — Backend & Automation Engineer" />
   <meta property="og:description" content="Proof‑of‑work projects: FastAPI, webhooks, Redis queues, CI, observability." />
   <meta property="og:type" content="website" />
+  
   <link rel="icon" href="/public/favicon.ico" />
-  <!-- Tailwind (CDN for v1) -->
+  
+  <!-- Styles & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style> body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; } </style>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  </style>
 </head>
 <body class="bg-neutral-950 text-neutral-100">
-  <!-- Nav -->
+  <!-- Navigation -->
   <header class="sticky top-0 z-10 backdrop-blur bg-neutral-950/60 border-b border-neutral-800">
     <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
       <a href="#" class="font-semibold tracking-tight">Trevor Drozd</a>
@@ -29,20 +35,19 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="mx-auto max-w-5xl px-4 py-16">
     <div class="grid md:grid-cols-2 gap-8 items-center">
       <div>
         <h1 class="text-3xl md:text-5xl font-bold leading-tight">
           Backend & Automation Engineer
         </h1>
-        <p class="mt-4 text-neutral-300">
-          Python • FastAPI • Docker/CI • Observability.
-          I build small, production‑ready services with clean docs, tests, and demos.<br>
-        <h4>I build internal tools that remove friction.</h4>
-        </p>
+        <div class="mt-4 text-neutral-300">
+          <p>Python • FastAPI • Docker/CI • Observability. I build small, production‑ready services with clean docs, tests, and demos.</p>
+          <h4 class="mt-2 font-semibold">I build internal tools that remove friction.</h4>
+        </div>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="https://github.com/tcdrozd" target="_blank" class="px-4 py-2 rounded-xl bg-white text-neutral-900 font-semibold">GitHub</a>
+          <a href="https://github.com/tcdrozd" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-white text-neutral-900 font-semibold">GitHub</a>
           <a href="/public/resume.pdf" class="px-4 py-2 rounded-xl bg-neutral-800 border border-neutral-700">Resume</a>
           <a href="#contact" class="px-4 py-2 rounded-xl bg-neutral-800 border border-neutral-700">Contact</a>
         </div>
@@ -58,98 +63,290 @@
     </div>
   </section>
 
-  <!-- Filters -->
+  <!-- Project Filters -->
   <section class="mx-auto max-w-5xl px-4">
-    <div class="flex flex-wrap gap-2" id="tagBar"></div>
+    <div class="flex items-center justify-between gap-3">
+      <h2 class="text-sm font-semibold text-neutral-300">Filters</h2>
+      <button id="toggleTags"
+        class="sm:hidden px-3 py-1 rounded-xl border border-neutral-700 text-sm hover:bg-neutral-800"
+        aria-label="Toggle tag visibility">
+        Show tags
+      </button>
+    </div>
+
+    <div id="tagWrap" class="mt-3 sm:mt-0">
+      <div class="flex flex-wrap gap-2 sm:gap-2" id="tagBar" role="toolbar" aria-label="Project tags filter"></div>
+    </div>
   </section>
 
-  <!-- Work -->
+  <!-- Projects Grid -->
   <section id="work" class="mx-auto max-w-5xl px-4 py-10">
     <h2 class="text-2xl font-bold">Selected Work</h2>
-    <div id="projects" class="mt-6 grid sm:grid-cols-2 gap-6"></div>
+    <div id="projects" class="mt-6 grid sm:grid-cols-2 gap-6" role="list" aria-label="Project list"></div>
   </section>
 
-  <!-- Writing -->
+  <!-- Writing Section -->
   <section id="writing" class="mx-auto max-w-5xl px-4 py-10 border-t border-neutral-900">
     <h2 class="text-2xl font-bold">Writing & Notes</h2>
     <p class="mt-3 text-neutral-300">Short write‑ups, ADRs, and diagrams. (Wire this to Wiki.js or add markdown links.)</p>
     <ul class="mt-4 space-y-2 text-neutral-300 text-sm" id="posts">
-      <!--<li><a class="underline" href="#">Designing a resilient webhook receiver</a></li>
-      <li><a class="underline" href="#">Observability starter: logs, metrics, alerts</a></li>-->
+      <!-- Content populated via JavaScript if needed -->
     </ul>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section id="contact" class="mx-auto max-w-5xl px-4 py-10 border-t border-neutral-900">
     <h2 class="text-2xl font-bold">Contact</h2>
-    <p class="mt-3 text-neutral-300"><a class="underline" href="mailto:trcharlesd@gmail.com">trcharlesd@gmail.com</a> ·
-    <a class="underline" href="https://www.github.com/tcdrozd">LinkedIn</a> ·
-    <a class="underline" href="https://www.linkedin.com/in/trevor-drozd/">GitHub</a></p>
+    <p class="mt-3 text-neutral-300">
+      <a class="underline" href="mailto:trcharlesd@gmail.com">trcharlesd@gmail.com</a> ·
+      <a class="underline" href="https://www.linkedin.com/in/trevor-drozd/" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+      <a class="underline" href="https://www.github.com/tcdrozd" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
   </section>
 
+  <!-- Footer -->
   <footer class="mx-auto max-w-5xl px-4 py-10 text-neutral-500 text-xs">
     <p>© <span id="year"></span> Trevor Drozd</p>
   </footer>
 
   <script>
-    // Simple data-driven projects grid from /data/projects.json
+    // ==============================================
+    // PROJECTS DATA & FILTERING SYSTEM
+    // ==============================================
+    
+    // State management
     const TAGS = new Set();
-    const selected = new Set();
+    const selectedTags = new Set();
+    let tagsExpanded = false;
 
-    async function loadProjects() {
-      const res = await fetch('/data/projects.json');
-      const items = await res.json();
-      items.forEach(p => p.tags.forEach(t => TAGS.add(t)));
-      renderTagBar();
-      renderProjects(items);
+    // Check if viewport is desktop (≥ 640px)
+    function isDesktop() {
+      return window.matchMedia('(min-width: 640px)').matches;
     }
 
-    function renderTagBar() {
-      const tagBar = document.getElementById('tagBar');
-      tagBar.innerHTML = '';
-      Array.from(TAGS).sort().forEach(tag => {
-        const btn = document.createElement('button');
-        btn.className = 'px-3 py-1 rounded-full border border-neutral-700 text-sm hover:bg-neutral-800';
-        btn.textContent = tag;
-        btn.onclick = () => { toggleTag(tag); };
-        tagBar.appendChild(btn);
+    // Toggle tag visibility on mobile
+    function updateTagVisibility() {
+      const wrap = document.getElementById('tagWrap');
+      const btn = document.getElementById('toggleTags');
+      if (!wrap || !btn) return;
+
+      if (isDesktop()) {
+        wrap.style.display = '';
+        btn.style.display = 'none';
+        return;
+      }
+
+      btn.style.display = '';
+      wrap.style.display = tagsExpanded ? '' : 'none';
+      btn.textContent = tagsExpanded ? 'Hide tags' : 'Show tags';
+    }
+
+    // Event listener for mobile tag toggle button
+    document.getElementById('toggleTags')?.addEventListener('click', () => {
+      tagsExpanded = !tagsExpanded;
+      updateTagVisibility();
+    });
+
+    // Update tag visibility on window resize
+    window.addEventListener('resize', updateTagVisibility);
+
+    /**
+     * Normalize project data from JSON
+     * Supports both legacy (tech/highlights) and current (tags/notes) schemas
+     */
+    function normalizeProject(project) {
+      const tags = Array.isArray(project.tags) 
+        ? project.tags 
+        : (Array.isArray(project.tech) ? project.tech : []);
+      
+      const notes = Array.isArray(project.notes) 
+        ? project.notes 
+        : (Array.isArray(project.highlights) ? project.highlights : []);
+      
+      const links = (project.links && typeof project.links === 'object') 
+        ? project.links 
+        : {};
+      
+      const summary = (project.summary ?? project.description ?? '').toString();
+      
+      return { 
+        ...project, 
+        tags, 
+        notes, 
+        links, 
+        summary 
+      };
+    }
+
+    /**
+     * Fetch projects from JSON file
+     */
+    async function fetchProjects() {
+      try {
+        const res = await fetch('/data/projects.json', { cache: 'no-store' });
+        if (!res.ok) {
+          throw new Error(`Failed to fetch projects (HTTP ${res.status})`);
+        }
+        const raw = await res.json();
+        
+        if (!Array.isArray(raw)) {
+          throw new Error('projects.json must be a JSON array');
+        }
+        
+        return raw.map(normalizeProject);
+      } catch (error) {
+        console.error('Error loading projects:', error);
+        throw error;
+      }
+    }
+
+    /**
+     * Render the tag filter bar
+     */
+    function renderTagBar(projects) {
+      // Clear and rebuild tag set
+      TAGS.clear();
+      projects.forEach(project => {
+        project.tags.forEach(tag => TAGS.add(tag));
       });
+
+      const tagBar = document.getElementById('tagBar');
+      if (!tagBar) return;
+
+      tagBar.innerHTML = '';
+
+      // Create tag buttons
+      Array.from(TAGS).sort().forEach(tag => {
+        const button = document.createElement('button');
+        const isActive = selectedTags.has(tag);
+        
+        button.className = isActive
+          ? 'px-3 py-1 rounded-full border border-neutral-600 bg-neutral-800 text-sm'
+          : 'px-3 py-1 rounded-full border border-neutral-700 text-sm hover:bg-neutral-800';
+        
+        button.textContent = tag;
+        button.setAttribute('aria-pressed', isActive);
+        
+        button.addEventListener('click', () => {
+          if (selectedTags.has(tag)) {
+            selectedTags.delete(tag);
+          } else {
+            selectedTags.add(tag);
+          }
+          loadAndRender();
+        });
+        
+        tagBar.appendChild(button);
+      });
+
+      updateTagVisibility();
     }
 
-    function toggleTag(tag) {
-      if (selected.has(tag)) selected.delete(tag); else selected.add(tag);
-      loadAndRender();
-    }
-
-    async function loadAndRender() {
-      const res = await fetch('/data/projects.json');
-      const items = await res.json();
-      renderProjects(items);
-    }
-
-    function renderProjects(items) {
+    /**
+     * Render projects grid
+     */
+    function renderProjects(projects) {
       const grid = document.getElementById('projects');
-      const active = selected.size ? items.filter(p => p.tags.some(t => selected.has(t))) : items;
-      grid.innerHTML = active.map(p => `
+      if (!grid) return;
+
+      // Filter projects by selected tags
+      const activeProjects = selectedTags.size
+        ? projects.filter(project => 
+            project.tags.some(tag => selectedTags.has(tag)))
+        : projects;
+
+      // Handle empty state
+      if (activeProjects.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-2 text-center py-8 text-neutral-400">
+            No projects match the selected filters.
+          </div>
+        `;
+        return;
+      }
+
+      // Generate project cards
+      grid.innerHTML = activeProjects.map(project => `
         <article class="rounded-2xl border border-neutral-800 p-5 bg-neutral-900/40">
-          <h3 class="text-lg font-semibold">${p.title}</h3>
-          <p class="mt-2 text-sm text-neutral-300">${p.summary}</p>
-          <div class="mt-3 flex flex-wrap gap-2">
-            ${p.tags.map(t => `<span class='text-xs px-2 py-1 rounded-full bg-neutral-800 border border-neutral-700'>${t}</span>`).join('')}
-          </div>
+          <h3 class="text-lg font-semibold">${project.title || 'Untitled Project'}</h3>
+          <p class="mt-2 text-sm text-neutral-300">${project.summary}</p>
+
+          ${project.tags.length ? `
+            <div class="mt-3 flex flex-wrap gap-2">
+              ${project.tags.map(tag => `
+                <span class="text-xs px-2 py-1 rounded-full bg-neutral-800 border border-neutral-700">
+                  ${tag}
+                </span>
+              `).join('')}
+            </div>
+          ` : ''}
+
           <div class="mt-4 flex flex-wrap gap-3 text-sm">
-            ${p.links.repo ? `<a class='underline' target='_blank' href='${p.links.repo}'>Repo</a>` : ''}
-            ${p.links.demo ? `<a class='underline' target='_blank' href='${p.links.demo}'>Demo</a>` : ''}
-            ${p.links.loom ? `<a class='underline' target='_blank' href='${p.links.loom}'>Loom</a>` : ''}
+            ${project.links.repo ? `
+              <a class="underline" target="_blank" rel="noopener noreferrer" href="${project.links.repo}">
+                Repo
+              </a>
+            ` : ''}
+            ${project.links.demo ? `
+              <a class="underline" target="_blank" rel="noopener noreferrer" href="${project.links.demo}">
+                Demo
+              </a>
+            ` : ''}
+            ${project.links.loom ? `
+              <a class="underline" target="_blank" rel="noopener noreferrer" href="${project.links.loom}">
+                Loom
+              </a>
+            ` : ''}
           </div>
-          ${p.impact ? `<p class="mt-3 text-xs text-neutral-400"><strong>Impact:</strong> ${p.impact}</p>` : ''}
-          ${p.notes?.length ? `<ul class="mt-3 text-xs text-neutral-400 list-disc list-inside">${p.notes.map(n => `<li>${n}</li>`).join('')}</ul>` : ''}
+
+          ${project.impact ? `
+            <p class="mt-3 text-xs text-neutral-400">
+              <strong>Impact:</strong> ${project.impact}
+            </p>
+          ` : ''}
+
+          ${project.notes.length ? `
+            <ul class="mt-3 text-xs text-neutral-400 list-disc list-inside">
+              ${project.notes.map(note => `<li>${note}</li>`).join('')}
+            </ul>
+          ` : ''}
         </article>
       `).join('');
     }
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-    loadProjects();
+    /**
+     * Main function to load data and render UI
+     */
+    async function loadAndRender() {
+      const grid = document.getElementById('projects');
+      
+      try {
+        const projects = await fetchProjects();
+        renderTagBar(projects);
+        renderProjects(projects);
+      } catch (error) {
+        console.error('Failed to load projects:', error);
+        if (grid) {
+          grid.innerHTML = `
+            <div class="col-span-2 text-center py-8 text-red-300">
+              Failed to load projects. Please check the console for details.
+            </div>
+          `;
+        }
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set current year in footer
+      const yearElement = document.getElementById('year');
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+      
+      // Load and render projects
+      loadAndRender();
+    });
   </script>
 </body>
 </html>
